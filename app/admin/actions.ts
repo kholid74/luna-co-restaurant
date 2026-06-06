@@ -26,7 +26,7 @@ export async function logout() {
 
 export async function createMenuItem(formData: FormData) {
   const supabase = await createClient()
-  const { error } = await supabase.from('menu_items').insert({
+  await supabase.from('menu_items').insert({
     name: formData.get('name') as string,
     description: (formData.get('description') as string) || null,
     price: parseInt(formData.get('price') as string),
@@ -36,14 +36,13 @@ export async function createMenuItem(formData: FormData) {
     is_available: formData.get('is_available') === 'true',
     order: parseInt((formData.get('order') as string) ?? '0'),
   })
-  if (error) return { error: error.message }
   revalidatePath('/admin/menu')
   revalidatePath('/')
 }
 
 export async function updateMenuItem(id: string, formData: FormData) {
   const supabase = await createClient()
-  const { error } = await supabase
+  await supabase
     .from('menu_items')
     .update({
       name: formData.get('name') as string,
@@ -55,7 +54,6 @@ export async function updateMenuItem(id: string, formData: FormData) {
       is_available: formData.get('is_available') === 'true',
     })
     .eq('id', id)
-  if (error) return { error: error.message }
   revalidatePath('/admin/menu')
   revalidatePath('/')
 }
