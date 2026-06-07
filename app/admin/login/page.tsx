@@ -28,7 +28,8 @@ export default function LoginPage() {
         }}
       >
         <div style={{ textAlign: 'center', marginBottom: 32 }}>
-          <span
+          <a
+            href="/"
             style={{
               display: 'inline-grid',
               placeItems: 'center',
@@ -41,10 +42,15 @@ export default function LoginPage() {
               fontSize: 28,
               fontStyle: 'italic',
               marginBottom: 12,
+              textDecoration: 'none',
+              transition: 'opacity .15s',
             }}
+            onMouseOver={(e) => (e.currentTarget.style.opacity = '.8')}
+            onMouseOut={(e) => (e.currentTarget.style.opacity = '1')}
+            aria-label="Kembali ke website Luma & Co."
           >
             L
-          </span>
+          </a>
           <h1 style={{ margin: 0, fontSize: 22, fontWeight: 800, letterSpacing: '-.03em' }}>
             Luma &amp; Co. Admin
           </h1>
@@ -87,6 +93,29 @@ export default function LoginPage() {
             {pending ? 'Masuk...' : 'Masuk ke Dashboard'}
           </button>
         </form>
+
+        <div style={{ textAlign: 'center', marginTop: 24, paddingTop: 20, borderTop: '1px solid var(--line)' }}>
+          <a
+            href="/"
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: 6,
+              color: 'var(--muted)',
+              fontSize: 13,
+              fontWeight: 700,
+              transition: 'color .15s',
+              textDecoration: 'none',
+            }}
+            onMouseOver={(e) => (e.currentTarget.style.color = 'var(--ink)')}
+            onMouseOut={(e) => (e.currentTarget.style.color = 'var(--muted)')}
+          >
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M19 12H5M12 19l-7-7 7-7" />
+            </svg>
+            Kembali ke website utama
+          </a>
+        </div>
       </div>
     </div>
   )
