@@ -18,7 +18,7 @@ export function SiteFooter() {
           <a href="/#visit">Visit</a>
         </nav>
         <p className="footer-copy" style={{ margin: 0 }}>
-          © {new Date().getFullYear()} Luma &amp; Co.
+          © {new Date().getFullYear()} &nbsp;Luma &amp; Co.
         </p>
       </div>
     </footer>
